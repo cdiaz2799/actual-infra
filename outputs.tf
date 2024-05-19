@@ -1,3 +1,7 @@
+output "gitlab_repo" {
+  value = gitlab_project.main.web_url
+}
+
 output "github_repo" {
   value = github_repository.actual.html_url
 }
