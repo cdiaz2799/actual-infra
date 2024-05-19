@@ -14,3 +14,14 @@ variable "base_domain" {
   type        = string
   default     = "cdiaz.cloud"
 }
+
+variable "github_username" {
+  description = "GitHub Username"
+  type        = string
+}
+
+variable "github_token" {
+  description = "GitHub Token"
+  type        = string
+  sensitive   = true
+}

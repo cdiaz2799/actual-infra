@@ -5,6 +5,12 @@ locals {
   repo_visibility  = "public"
 }
 
+resource "gitlab_project_mirror" "actual" {
+  project = gitlab_project.main.id
+  url     = "https://${var.github_username}:${var.github_token}@github.com/${github_repository.actual.full_name}.git"
+
+}
+
 resource "gitlab_project" "main" {
   name        = local.repo_name
   description = local.repo_description
@@ -17,14 +23,13 @@ resource "gitlab_project" "main" {
   environments_access_level = "private"
   pages_access_level        = "disabled"
 
-  issues_enabled          = false
-  lfs_enabled             = false
-  merge_requests_enabled  = true
-  merge_pipelines_enabled = true
-  packages_enabled        = false
-  public_jobs             = true
-  snippets_enabled        = false
-  wiki_enabled            = false
+  issues_enabled         = false
+  lfs_enabled            = false
+  merge_requests_enabled = true
+  packages_enabled       = false
+  public_jobs            = true
+  snippets_enabled       = false
+  wiki_enabled           = false
 
   releases_access_level   = "enabled"
   repository_access_level = "enabled"
