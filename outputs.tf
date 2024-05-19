@@ -1,11 +1,9 @@
 output "gitlab_repo" {
-  value = gitlab_project.main.web_url
+  description = "URL to Access Gitlab Repo"
+  value       = gitlab_project.main.web_url
 }
 
 output "github_repo" {
-  value = github_repository.actual.html_url
-}
-
-output "domain_mapping_status" {
-  value = google_cloud_run_domain_mapping.main.status[0].conditions[0].message
+  description = "URL to Access GitHub Repo"
+  value       = github_repository.actual.html_url
 }
